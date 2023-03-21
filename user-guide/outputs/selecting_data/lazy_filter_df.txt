@@ -1,0 +1,4 @@
+
+  CSV SCAN data/appleStock.csv
+  PROJECT */2 COLUMNS
+  SELECTION: [([(col("Date")) == (1995-10-16 00:00:00.cast(Utf8))]) & ([(col("Close")) > (100.0)])]

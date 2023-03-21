@@ -1,0 +1,434 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Introduction - Polars - User Guide</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="tabbed-code-blocks.css">
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="quickstart/intro.html"><strong aria-hidden="true">2.</strong> Getting started</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="quickstart/quick-exploration-guide.html"><strong aria-hidden="true">2.1.</strong> Polars quick exploration guide</a></li></ol></li><li class="chapter-item expanded "><a href="dsl/intro.html"><strong aria-hidden="true">3.</strong> Polars expressions</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="dsl/expressions.html"><strong aria-hidden="true">3.1.</strong> Expressions</a></li><li class="chapter-item "><a href="dsl/contexts.html"><strong aria-hidden="true">3.2.</strong> Contexts</a></li><li class="chapter-item "><a href="dsl/groupby.html"><strong aria-hidden="true">3.3.</strong> GroupBy</a></li><li class="chapter-item "><a href="dsl/folds.html"><strong aria-hidden="true">3.4.</strong> Folds</a></li><li class="chapter-item "><a href="dsl/window_functions.html"><strong aria-hidden="true">3.5.</strong> Window functions</a></li><li class="chapter-item "><a href="dsl/list_context.html"><strong aria-hidden="true">3.6.</strong> List context and row-wise compute</a></li><li class="chapter-item "><a href="dsl/numpy.html"><strong aria-hidden="true">3.7.</strong> Numpy universal functions</a></li><li class="chapter-item "><a href="dsl/custom_functions.html"><strong aria-hidden="true">3.8.</strong> Custom functions</a></li><li class="chapter-item "><a href="notebooks/introduction_polars-py.html"><strong aria-hidden="true">3.9.</strong> Python Examples</a></li><li class="chapter-item "><a href="notebooks/introduction_polars-rs.html"><strong aria-hidden="true">3.10.</strong> Rust Examples</a></li><li class="chapter-item "><a href="dsl/api.html"><strong aria-hidden="true">3.11.</strong> API</a></li><li class="chapter-item "><a href="dsl/video_intro.html"><strong aria-hidden="true">3.12.</strong> Video introduction</a></li></ol></li><li class="chapter-item expanded "><a href="lazy-api/intro.html"><strong aria-hidden="true">4.</strong> Lazy API</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="lazy-api/lazy-query-create.html"><strong aria-hidden="true">4.1.</strong> Using the lazy API</a></li><li class="chapter-item "><a href="lazy-api/lazy-schema.html"><strong aria-hidden="true">4.2.</strong> Schema in the lazy API</a></li><li class="chapter-item "><a href="lazy-api/lazy-query-plan.html"><strong aria-hidden="true">4.3.</strong> Understanding the query plan</a></li><li class="chapter-item "><a href="lazy-api/lazy-query-execution.html"><strong aria-hidden="true">4.4.</strong> Executing lazy queries</a></li><li class="chapter-item "><a href="lazy-api/streaming.html"><strong aria-hidden="true">4.5.</strong> Streaming larger-than-memory datasets</a></li></ol></li><li class="chapter-item expanded "><a href="datatypes.html"><strong aria-hidden="true">5.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="coming_from_pandas.html"><strong aria-hidden="true">6.</strong> Coming from Pandas</a></li><li class="chapter-item expanded "><a href="coming_from_spark.html"><strong aria-hidden="true">7.</strong> Coming from Apache Spark</a></li><li class="chapter-item expanded "><a href="sql.html"><strong aria-hidden="true">8.</strong> Polars SQL</a></li><li class="chapter-item expanded "><a href="howcani/intro.html"><strong aria-hidden="true">9.</strong> How can I?</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="howcani/io/intro.html"><strong aria-hidden="true">9.1.</strong> IO</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="howcani/io/csv.html"><strong aria-hidden="true">9.1.1.</strong> CSV files</a></li><li class="chapter-item "><a href="howcani/io/parquet.html"><strong aria-hidden="true">9.1.2.</strong> Parquet files</a></li><li class="chapter-item "><a href="howcani/io/json.html"><strong aria-hidden="true">9.1.3.</strong> JSON files</a></li><li class="chapter-item "><a href="multiple_files/intro.html"><strong aria-hidden="true">9.1.4.</strong> Multiple files</a></li><li class="chapter-item "><a href="howcani/io/read_db.html"><strong aria-hidden="true">9.1.5.</strong> Read from a database</a></li><li class="chapter-item "><a href="howcani/io/aws.html"><strong aria-hidden="true">9.1.6.</strong> Interact with AWS</a></li><li class="chapter-item "><a href="howcani/io/google-big-query.html"><strong aria-hidden="true">9.1.7.</strong> Interact with Google BigQuery</a></li><li class="chapter-item "><a href="howcani/io/postgres.html"><strong aria-hidden="true">9.1.8.</strong> Interact with Postgres</a></li><li class="chapter-item "><a href="howcani/interop/intro.html"><strong aria-hidden="true">9.1.9.</strong> Interoperability</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="howcani/interop/arrow.html"><strong aria-hidden="true">9.1.9.1.</strong> Arrow</a></li><li class="chapter-item "><a href="howcani/interop/numpy.html"><strong aria-hidden="true">9.1.9.2.</strong> NumPy</a></li></ol></li></ol></li><li class="chapter-item "><a href="howcani/selecting_data/selecting_data_intro.html"><strong aria-hidden="true">9.2.</strong> Selecting data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="howcani/selecting_data/selecting_data_expressions.html"><strong aria-hidden="true">9.2.1.</strong> Selecting with expressions</a></li><li class="chapter-item "><a href="howcani/selecting_data/selecting_data_indexing.html"><strong aria-hidden="true">9.2.2.</strong> Selecting with indexing</a></li></ol></li><li class="chapter-item "><a href="howcani/data/intro.html"><strong aria-hidden="true">9.3.</strong> Data handling</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="howcani/data/strings.html"><strong aria-hidden="true">9.3.1.</strong> Process strings</a></li><li class="chapter-item "><a href="howcani/data/timestamps.html"><strong aria-hidden="true">9.3.2.</strong> Process timestamps</a></li><li class="chapter-item "><a href="howcani/missing_data.html"><strong aria-hidden="true">9.3.3.</strong> Process missing data</a></li></ol></li><li class="chapter-item "><a href="howcani/timeseries/intro.html"><strong aria-hidden="true">9.4.</strong> Time-series</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="howcani/timeseries/parsing_dates_times.html"><strong aria-hidden="true">9.4.1.</strong> Parsing dates and times</a></li><li class="chapter-item "><a href="howcani/timeseries/selecting_dates.html"><strong aria-hidden="true">9.4.2.</strong> Filtering by dates</a></li><li class="chapter-item "><a href="howcani/timeseries/temporal_groupby.html"><strong aria-hidden="true">9.4.3.</strong> Fixed and rolling temporal groupby</a></li><li class="chapter-item "><a href="howcani/timeseries/resampling.html"><strong aria-hidden="true">9.4.4.</strong> Resampling</a></li><li class="chapter-item "><a href="howcani/timeseries/time_zones.html"><strong aria-hidden="true">9.4.5.</strong> Time zones</a></li></ol></li><li class="chapter-item "><a href="howcani/combining_data/intro.html"><strong aria-hidden="true">9.5.</strong> Combining data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="howcani/combining_data/concatenating.html"><strong aria-hidden="true">9.5.1.</strong> Concatenation</a></li><li class="chapter-item "><a href="howcani/combining_data/joining.html"><strong aria-hidden="true">9.5.2.</strong> Joining</a></li></ol></li><li class="chapter-item "><a href="howcani/multiprocessing.html"><strong aria-hidden="true">9.6.</strong> Multiprocessing</a></li></ol></li><li class="chapter-item expanded "><a href="performance/intro.html"><strong aria-hidden="true">10.</strong> Performance</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="performance/strings.html"><strong aria-hidden="true">10.1.</strong> Strings</a></li></ol></li><li class="chapter-item expanded "><a href="optimizations/intro.html"><strong aria-hidden="true">11.</strong> Optimizations</a></li><li class="chapter-item expanded "><a href="testing/schema.html"><strong aria-hidden="true">12.</strong> Testing</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">13.</strong> Reference guides</a></li><li class="chapter-item expanded "><a href="contributing.html"><strong aria-hidden="true">14.</strong> Contributing</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Polars - User Guide</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <div style="margin: 30px auto; background-color: white; border-radius: 50%; width: 200px; height: 200px;"><img src="https://raw.githubusercontent.com/pola-rs/polars-static/master/logos/polars-logo-dark.svg" alt="Polars logo" style="width: 168px; height: 168px; padding: 10px 20px;"></div>
+<h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>This book is an introduction to the
+<a href="https://github.com/pola-rs/polars"><code>Polars</code> DataFrame library</a>. Its goal is to
+introduce you to <code>Polars</code> by going through examples and comparing it to other
+solutions. Some design choices are introduced here. The guide will also introduce you to
+optimal usage of <code>Polars</code>.</p>
+<p>Even though <code>Polars</code> is completely written in <a href="https://www.rust-lang.org/"><code>Rust</code></a> (no
+runtime overhead!) and uses <a href="https://arrow.apache.org/"><code>Arrow</code></a> -- the
+<a href="https://github.com/jorgecarleitao/arrow2">native arrow2 <code>Rust</code> implementation</a> -- as its foundation, the
+examples presented in this guide will be mostly using its higher-level language
+bindings. Higher-level bindings only serve as a thin wrapper for functionality implemented in the core library.</p>
+<p>For <a href="https://pandas.pydata.org/"><code>Pandas</code></a> users, our
+<a href="https://pypi.org/project/polars/">Python package</a> will offer the easiest way to get started with
+<code>Polars</code>.</p>
+<h2 id="goals-and-non-goals"><a class="header" href="#goals-and-non-goals">Goals and non-goals</a></h2>
+<p>The goal of <code>Polars</code> is to provide a lightning fast <code>DataFrame</code> library that:</p>
+<ul>
+<li>Utilizes all available cores on your machine.</li>
+<li>Optimizes queries to reduce unneeded work/memory allocations.</li>
+<li>Handles datasets much larger than your available RAM.</li>
+<li>Has an API that is consistent and predictable.</li>
+<li>Has a strict schema (data-types should be known before running the query).</li>
+</ul>
+<p>Polars is written in Rust which gives it C/C++ performance and allows it to fully control performance critical parts
+in a query engine.</p>
+<p>As such <code>Polars</code> goes to great lengths to:</p>
+<ul>
+<li>Reduce redundant copies.</li>
+<li>Traverse memory cache efficiently.</li>
+<li>Minimize contention in parallelism.</li>
+<li>Process data in chunks.</li>
+<li>Reuse memory allocations.</li>
+</ul>
+<p>Polars also has control over IO, allowing it to save redundant copies and to push down projections and predicates to
+the scan level.</p>
+<p>Unlike tools such as dask -- which tries to parallelize existing single-threaded libraries
+like <code>NumPy</code> and <code>Pandas</code> --<code>Polars</code> is written from the ground up, designed for parallelization of queries on <code>DataFrame</code>s.</p>
+<p><code>Polars</code> is lazy and semi-lazy. It allows you to do most of your work eagerly, similar to <code>Pandas</code>, but
+it also provides a powerful expression syntax that will be optimized and executed on within the query engine.</p>
+<p>In lazy <code>Polars</code> we are able to do query optimization on the entire query, further improving performance and memory pressure.</p>
+<p><code>Polars</code> keeps track of your query in a <em>logical plan</em>. This
+plan is optimized and reordered before running it. When a result is requested, <code>Polars</code>
+distributes the available work to different <em>executors</em> that use the algorithms available
+in the eager API to produce a result. Because the whole query context is known to
+the optimizer and executors of the logical plan, processes dependent on separate data
+sources can be parallelized on the fly.</p>
+<h3 id="performance-"><a class="header" href="#performance-">Performance 🚀🚀</a></h3>
+<p><code>Polars</code> is very fast, and in fact is one of the best performing solutions available.
+See the results in h2oai's db-benchmark. The image below shows the biggest datasets yielding a result.</p>
+<p><img src="https://www.ritchievink.com/img/post-35-polars-0.15/db-benchmark.png" alt="" /></p>
+<p><code>Polars</code> <a href="https://www.pola.rs/benchmarks.html">TPCH Benchmark results</a> are now available on the official website.</p>
+<h3 id="current-status"><a class="header" href="#current-status">Current status</a></h3>
+<p>Below a concise list of the features allowing <code>Polars</code> to meet its goals:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Copy-on-write">Copy-on-write</a> (COW) semantics
+<ul>
+<li>&quot;Free&quot; clones</li>
+<li>Cheap appends</li>
+</ul>
+</li>
+<li>Appending without clones</li>
+<li>Column oriented data storage
+<ul>
+<li>No block manager (i.e. predictable performance)</li>
+</ul>
+</li>
+<li>Missing values indicated with bitmask
+<ul>
+<li>NaN are different from missing</li>
+<li>Bitmask optimizations</li>
+</ul>
+</li>
+<li>Efficient algorithms</li>
+<li>Very fast IO
+<ul>
+<li>Its csv and parquet readers are among the fastest in existence</li>
+</ul>
+</li>
+<li>Out of Core
+<ul>
+<li>Many queries can be executed completely out of core
+(meaning that we can process datasets that are larger than RAM)</li>
+<li>Arrow/IPC files can be memory mapped (this is the strategy vaex uses)</li>
+</ul>
+</li>
+<li><a href="optimizations/lazy/intro.html">Query optimizations</a>
+<ul>
+<li>Predicate pushdown
+<ul>
+<li>Filtering at scan level</li>
+</ul>
+</li>
+<li>Projection pushdown
+<ul>
+<li>Projection at scan level</li>
+</ul>
+</li>
+<li>Aggregate pushdown
+<ul>
+<li>Aggregations at scan level</li>
+</ul>
+</li>
+<li>Simplify expressions</li>
+<li>Scan sharing</li>
+<li>Common subplan elimination</li>
+<li>Parallel execution of physical plan</li>
+<li>Cardinality based groupby dispatch
+<ul>
+<li>Different groupby strategies based on data cardinality</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SIMD vectorization</li>
+<li><a href="https://numpy.org/doc/stable/reference/ufuncs.html"><code>NumPy</code> universal functions</a></li>
+</ul>
+<h3 id="comparison-with-other-tools"><a class="header" href="#comparison-with-other-tools">Comparison with other tools</a></h3>
+<p>These are some tools that share similar functionality to what polars does.</p>
+<ul>
+<li>
+<p>Pandas</p>
+<ul>
+<li>A very versatile tool for small data. Read <a href="https://wesmckinney.com/blog/apache-arrow-pandas-internals/">10 things I hate about pandas</a>
+written by the author himself. Polars has solved all those 10 things.
+Polars is a versatile tool for small and large data with a more predictable API, less ambiguous and stricter API.</li>
+</ul>
+</li>
+<li>
+<p>Pandas the API</p>
+<ul>
+<li>The API of pandas was designed for in memory data. This makes it a poor fit for performant analysis on large data
+(read anything that does not fit into RAM). Any tool that tries to distribute that API will likely have a
+suboptimal query plan compared to plans that follow from a declarative API like SQL or polars' API.</li>
+</ul>
+</li>
+<li>
+<p>Dask</p>
+<ul>
+<li>Parallelizes existing single-threaded libraries like <code>NumPy</code> and <code>Pandas</code>. As a consumer of those libraries Dask
+therefore has less control over low level performance and semantics.
+Those libraries are treated like a black box.
+On a single machine the parallelization effort can also be seriously stalled by pandas strings.
+Pandas strings, by default, are stored as python objects in
+numpy arrays meaning that any operation on them is GIL bound and therefore single threaded. This can be circumvented
+by multi-processing but has a non-trivial cost.</li>
+</ul>
+</li>
+<li>
+<p>Modin</p>
+<ul>
+<li>Similar to Dask</li>
+</ul>
+</li>
+<li>
+<p>Vaex</p>
+<ul>
+<li>Vaexs method of out-of-core analysis is memory mapping files. This works until it doesn't. For instance parquet
+or csv files first need to be read and converted to a file format that can be memory mapped. Another downside is
+that the OS determines when pages will be swapped. Operations that need a full data shuffle, such as
+sorts cannot benefit from memory mapping. At the moment of writing vaex relies on pyarrow for sorts, meaning that the data must fit into memory.</li>
+<li>Polars' out of core processing is not based on memory mapping, but on streaming data in batches (and spilling to disk
+if needed), we control which data must be hold in memory, not the OS, meaning that we don't have unexpected IO stalls.</li>
+</ul>
+</li>
+<li>
+<p>DuckDB</p>
+<ul>
+<li>Polars and DuckDB have many similarities. DuckDB is focussed on providing an in-process OLAP Sqlite alternative,
+polars is focussed on providing a scalable <code>DataFrame</code> interface to many languages. Those different front-ends lead to
+different optimization strategies and different algorithm prioritization. The interop between both is zero-copy.
+See more: https://duckdb.org/docs/guides/python/polars</li>
+</ul>
+</li>
+<li>
+<p>Spark</p>
+<ul>
+<li>Spark is designed for distributed workloads and uses the JVM. The setup for spark is complicated and the startup-time
+is slow. Polars has much better performance characteristics on a single machine. The API's are somewhat similar.</li>
+</ul>
+</li>
+<li>
+<p>CuDF</p>
+<ul>
+<li>GPU's are fast, but not readily available and expensive in production. The amount of memory available on GPU often
+is a fraction of available RAM. Next to that Polars is close in <a href="https://zakopilo.hatenablog.jp/entry/2023/02/04/220552">performance to CuDF</a> and on some operations even faster.
+CuDF also doesn't optimize your query, so it is likely that on ETL jobs polars will be faster because it can elide
+unneeded work and materialization's.</li>
+</ul>
+</li>
+<li>
+<p>Any</p>
+<ul>
+<li>Polars is written in Rust. This gives it strong safety, performance and concurrency guarantees.
+Polars is written in a modular manner. Parts of polars can be used in other query program and can be added as a library.</li>
+</ul>
+</li>
+</ul>
+<h2 id="acknowledgements"><a class="header" href="#acknowledgements">Acknowledgements</a></h2>
+<p>Development of <code>Polars</code> is proudly powered by</p>
+<p><a href="https://www.xomnia.com"><img src="https://raw.githubusercontent.com/pola-rs/polars-static/master/sponsors/xomnia.png" alt="Xomnia" /></a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+                            <a rel="next" href="quickstart/intro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+                    <a rel="next" href="quickstart/intro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="tabbed-code-blocks.js"></script>
+        
+
+        
+
+    </body>
+</html>

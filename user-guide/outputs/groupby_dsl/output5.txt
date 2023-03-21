@@ -1,0 +1,12 @@
+shape: (5, 3)
+┌───────┬──────────────────┬─────────────────┐
+│ state ┆ youngest         ┆ oldest          │
+│ ---   ┆ ---              ┆ ---             │
+│ cat   ┆ str              ┆ str             │
+╞═══════╪══════════════════╪═════════════════╡
+│ MO    ┆ Vicky Hartzler   ┆ Spencer Pettis  │
+│ NH    ┆ Frank Guinta     ┆ John Sherburne  │
+│ NE    ┆ Benjamin Sasse   ┆ Samuel Daily    │
+│ NC    ┆ Madison Cawthorn ┆ John Ashe       │
+│ ID    ┆ Raúl Labrador    ┆ William Wallace │
+└───────┴──────────────────┴─────────────────┘

@@ -1,0 +1,12 @@
+shape: (5, 5)
+┌───────┬──────────────────┬───────────────────┬────────────────────┬────────┐
+│ state ┆ youngest         ┆ oldest            ┆ alphabetical_first ┆ gender │
+│ ---   ┆ ---              ┆ ---               ┆ ---                ┆ ---    │
+│ cat   ┆ str              ┆ str               ┆ str                ┆ cat    │
+╞═══════╪══════════════════╪═══════════════════╪════════════════════╪════════╡
+│ PA    ┆ Conor Lamb       ┆ Thomas Fitzsimons ┆ Aaron Kreider      ┆ M      │
+│ KY    ┆ Ben Chandler     ┆ John Edwards      ┆ Aaron Harding      ┆ M      │
+│ MD    ┆ Frank Kratovil   ┆ Benjamin Contee   ┆ Albert Blakeney    ┆ M      │
+│ OH    ┆ Anthony Gonzalez ┆ John Smith        ┆ Aaron Harlan       ┆ M      │
+│ VA    ┆ Scott Taylor     ┆ William Grayson   ┆ A. McEachin        ┆ M      │
+└───────┴──────────────────┴───────────────────┴────────────────────┴────────┘

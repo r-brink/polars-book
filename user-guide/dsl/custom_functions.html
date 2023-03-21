@@ -1,0 +1,522 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js ayu">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Custom functions - Polars - User Guide</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+        <link rel="stylesheet" href="../tabbed-code-blocks.css">
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "ayu";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('ayu')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../quickstart/intro.html"><strong aria-hidden="true">2.</strong> Getting started</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../quickstart/quick-exploration-guide.html"><strong aria-hidden="true">2.1.</strong> Polars quick exploration guide</a></li></ol></li><li class="chapter-item expanded "><a href="../dsl/intro.html"><strong aria-hidden="true">3.</strong> Polars expressions</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../dsl/expressions.html"><strong aria-hidden="true">3.1.</strong> Expressions</a></li><li class="chapter-item "><a href="../dsl/contexts.html"><strong aria-hidden="true">3.2.</strong> Contexts</a></li><li class="chapter-item "><a href="../dsl/groupby.html"><strong aria-hidden="true">3.3.</strong> GroupBy</a></li><li class="chapter-item "><a href="../dsl/folds.html"><strong aria-hidden="true">3.4.</strong> Folds</a></li><li class="chapter-item "><a href="../dsl/window_functions.html"><strong aria-hidden="true">3.5.</strong> Window functions</a></li><li class="chapter-item "><a href="../dsl/list_context.html"><strong aria-hidden="true">3.6.</strong> List context and row-wise compute</a></li><li class="chapter-item "><a href="../dsl/numpy.html"><strong aria-hidden="true">3.7.</strong> Numpy universal functions</a></li><li class="chapter-item expanded "><a href="../dsl/custom_functions.html" class="active"><strong aria-hidden="true">3.8.</strong> Custom functions</a></li><li class="chapter-item "><a href="../notebooks/introduction_polars-py.html"><strong aria-hidden="true">3.9.</strong> Python Examples</a></li><li class="chapter-item "><a href="../notebooks/introduction_polars-rs.html"><strong aria-hidden="true">3.10.</strong> Rust Examples</a></li><li class="chapter-item "><a href="../dsl/api.html"><strong aria-hidden="true">3.11.</strong> API</a></li><li class="chapter-item "><a href="../dsl/video_intro.html"><strong aria-hidden="true">3.12.</strong> Video introduction</a></li></ol></li><li class="chapter-item expanded "><a href="../lazy-api/intro.html"><strong aria-hidden="true">4.</strong> Lazy API</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../lazy-api/lazy-query-create.html"><strong aria-hidden="true">4.1.</strong> Using the lazy API</a></li><li class="chapter-item "><a href="../lazy-api/lazy-schema.html"><strong aria-hidden="true">4.2.</strong> Schema in the lazy API</a></li><li class="chapter-item "><a href="../lazy-api/lazy-query-plan.html"><strong aria-hidden="true">4.3.</strong> Understanding the query plan</a></li><li class="chapter-item "><a href="../lazy-api/lazy-query-execution.html"><strong aria-hidden="true">4.4.</strong> Executing lazy queries</a></li><li class="chapter-item "><a href="../lazy-api/streaming.html"><strong aria-hidden="true">4.5.</strong> Streaming larger-than-memory datasets</a></li></ol></li><li class="chapter-item expanded "><a href="../datatypes.html"><strong aria-hidden="true">5.</strong> Data Types</a></li><li class="chapter-item expanded "><a href="../coming_from_pandas.html"><strong aria-hidden="true">6.</strong> Coming from Pandas</a></li><li class="chapter-item expanded "><a href="../coming_from_spark.html"><strong aria-hidden="true">7.</strong> Coming from Apache Spark</a></li><li class="chapter-item expanded "><a href="../sql.html"><strong aria-hidden="true">8.</strong> Polars SQL</a></li><li class="chapter-item expanded "><a href="../howcani/intro.html"><strong aria-hidden="true">9.</strong> How can I?</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../howcani/io/intro.html"><strong aria-hidden="true">9.1.</strong> IO</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../howcani/io/csv.html"><strong aria-hidden="true">9.1.1.</strong> CSV files</a></li><li class="chapter-item "><a href="../howcani/io/parquet.html"><strong aria-hidden="true">9.1.2.</strong> Parquet files</a></li><li class="chapter-item "><a href="../howcani/io/json.html"><strong aria-hidden="true">9.1.3.</strong> JSON files</a></li><li class="chapter-item "><a href="../multiple_files/intro.html"><strong aria-hidden="true">9.1.4.</strong> Multiple files</a></li><li class="chapter-item "><a href="../howcani/io/read_db.html"><strong aria-hidden="true">9.1.5.</strong> Read from a database</a></li><li class="chapter-item "><a href="../howcani/io/aws.html"><strong aria-hidden="true">9.1.6.</strong> Interact with AWS</a></li><li class="chapter-item "><a href="../howcani/io/google-big-query.html"><strong aria-hidden="true">9.1.7.</strong> Interact with Google BigQuery</a></li><li class="chapter-item "><a href="../howcani/io/postgres.html"><strong aria-hidden="true">9.1.8.</strong> Interact with Postgres</a></li><li class="chapter-item "><a href="../howcani/interop/intro.html"><strong aria-hidden="true">9.1.9.</strong> Interoperability</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../howcani/interop/arrow.html"><strong aria-hidden="true">9.1.9.1.</strong> Arrow</a></li><li class="chapter-item "><a href="../howcani/interop/numpy.html"><strong aria-hidden="true">9.1.9.2.</strong> NumPy</a></li></ol></li></ol></li><li class="chapter-item "><a href="../howcani/selecting_data/selecting_data_intro.html"><strong aria-hidden="true">9.2.</strong> Selecting data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../howcani/selecting_data/selecting_data_expressions.html"><strong aria-hidden="true">9.2.1.</strong> Selecting with expressions</a></li><li class="chapter-item "><a href="../howcani/selecting_data/selecting_data_indexing.html"><strong aria-hidden="true">9.2.2.</strong> Selecting with indexing</a></li></ol></li><li class="chapter-item "><a href="../howcani/data/intro.html"><strong aria-hidden="true">9.3.</strong> Data handling</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../howcani/data/strings.html"><strong aria-hidden="true">9.3.1.</strong> Process strings</a></li><li class="chapter-item "><a href="../howcani/data/timestamps.html"><strong aria-hidden="true">9.3.2.</strong> Process timestamps</a></li><li class="chapter-item "><a href="../howcani/missing_data.html"><strong aria-hidden="true">9.3.3.</strong> Process missing data</a></li></ol></li><li class="chapter-item "><a href="../howcani/timeseries/intro.html"><strong aria-hidden="true">9.4.</strong> Time-series</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../howcani/timeseries/parsing_dates_times.html"><strong aria-hidden="true">9.4.1.</strong> Parsing dates and times</a></li><li class="chapter-item "><a href="../howcani/timeseries/selecting_dates.html"><strong aria-hidden="true">9.4.2.</strong> Filtering by dates</a></li><li class="chapter-item "><a href="../howcani/timeseries/temporal_groupby.html"><strong aria-hidden="true">9.4.3.</strong> Fixed and rolling temporal groupby</a></li><li class="chapter-item "><a href="../howcani/timeseries/resampling.html"><strong aria-hidden="true">9.4.4.</strong> Resampling</a></li><li class="chapter-item "><a href="../howcani/timeseries/time_zones.html"><strong aria-hidden="true">9.4.5.</strong> Time zones</a></li></ol></li><li class="chapter-item "><a href="../howcani/combining_data/intro.html"><strong aria-hidden="true">9.5.</strong> Combining data</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../howcani/combining_data/concatenating.html"><strong aria-hidden="true">9.5.1.</strong> Concatenation</a></li><li class="chapter-item "><a href="../howcani/combining_data/joining.html"><strong aria-hidden="true">9.5.2.</strong> Joining</a></li></ol></li><li class="chapter-item "><a href="../howcani/multiprocessing.html"><strong aria-hidden="true">9.6.</strong> Multiprocessing</a></li></ol></li><li class="chapter-item expanded "><a href="../performance/intro.html"><strong aria-hidden="true">10.</strong> Performance</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../performance/strings.html"><strong aria-hidden="true">10.1.</strong> Strings</a></li></ol></li><li class="chapter-item expanded "><a href="../optimizations/intro.html"><strong aria-hidden="true">11.</strong> Optimizations</a></li><li class="chapter-item expanded "><a href="../testing/schema.html"><strong aria-hidden="true">12.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../references.html"><strong aria-hidden="true">13.</strong> Reference guides</a></li><li class="chapter-item expanded "><a href="../contributing.html"><strong aria-hidden="true">14.</strong> Contributing</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu (default)</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Polars - User Guide</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="custom-functions"><a class="header" href="#custom-functions">Custom functions</a></h1>
+<p>You should be convinced by now that polar expressions are so powerful and flexible that the need for custom python functions
+is much less needed than you might need in other libraries.</p>
+<p>Still, you need to have the power to be able to pass an expression's state to a third party library or apply your black box function
+over data in polars.</p>
+<p>For this we provide the following expressions:</p>
+<ul>
+<li><code>map</code></li>
+<li><code>apply</code></li>
+</ul>
+<h2 id="to-map-or-to-apply"><a class="header" href="#to-map-or-to-apply">To <code>map</code> or to <code>apply</code>.</a></h2>
+<p>These functions have an important distinction in how they operate and consequently what data they will pass to the user.</p>
+<p>A <code>map</code> passes the <code>Series</code> backed by the <code>expression</code> as is.</p>
+<p><code>map</code> follows the same rules in both the <code>select</code> and the <code>groupby</code> context, this will
+mean that the <code>Series</code> represents a column in a <code>DataFrame</code>. Note that in the <code>groupby</code> context, that column is not yet
+aggregated!</p>
+<p>Use cases for <code>map</code> are for instance passing the <code>Series</code> in an expression to a third party library. Below we show how
+we could use <code>map</code> to pass an expression column to a neural network model.</p>
+<div class="tabbed-blocks">
+<pre><code class="language-python">df.with_columns([
+    pl.col(&quot;features&quot;).map(lambda s: MyNeuralNetwork.forward(s.to_numpy())).alias(&quot;activations&quot;)
+])
+</code></pre>
+<pre><code class="language-rust noplayground">df.with_columns([
+    col(&quot;features&quot;).map(|s| Ok(my_nn.forward(s))).alias(&quot;activations&quot;)
+])
+</code></pre>
+</div>
+<p>Use cases for <code>map</code> in the <code>groupby</code> context are slim. They are only used for performance reasons, but can quite easily
+lead to incorrect results. Let me explain why.</p>
+<div class="tabbed-blocks">
+<pre><code class="language-python">df = pl.DataFrame(
+    {
+        &quot;keys&quot;: [&quot;a&quot;, &quot;a&quot;, &quot;b&quot;],
+        &quot;values&quot;: [10, 7, 1],
+    }
+)
+
+out = df.groupby(&quot;keys&quot;, maintain_order=True).agg(
+    [
+        pl.col(&quot;values&quot;).map(lambda s: s.shift()).alias(&quot;shift_map&quot;),
+        pl.col(&quot;values&quot;).shift().alias(&quot;shift_expression&quot;),
+    ]
+)
+print(df)
+</code></pre>
+<pre><code class="language-rust noplayground">        &quot;keys&quot; =&gt; &amp;[&quot;a&quot;, &quot;a&quot;, &quot;b&quot;],
+        &quot;values&quot; =&gt; &amp;[10, 7, 1],
+    )?;
+
+    let out = df
+        .lazy()
+        .groupby([&quot;keys&quot;])
+        .agg([
+            col(&quot;values&quot;)
+                .map(|s| Ok(s.shift(1)), GetOutput::default())
+                .alias(&quot;shift_map&quot;),
+            col(&quot;values&quot;).shift(1).alias(&quot;shift_expression&quot;),
+        ])
+        .collect()?;
+
+    println!(&quot;{}&quot;, out);
+</code></pre>
+</div>
+<pre><code>shape: (3, 2)
+┌──────┬────────┐
+│ keys ┆ values │
+│ ---  ┆ ---    │
+│ str  ┆ i64    │
+╞══════╪════════╡
+│ a    ┆ 10     │
+├╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┤
+│ a    ┆ 7      │
+├╌╌╌╌╌╌┼╌╌╌╌╌╌╌╌┤
+│ b    ┆ 1      │
+└──────┴────────┘
+
+</code></pre>
+<p>In the snippet above we groupby the <code>&quot;keys&quot;</code> column. That means we have the following groups:</p>
+<pre><code class="language-c">&quot;a&quot; -&gt; [10, 7]
+&quot;b&quot; -&gt; [1]
+</code></pre>
+<p>If we would then apply a <code>shift</code> operation to the right, we'd expect:</p>
+<pre><code class="language-c">&quot;a&quot; -&gt; [null, 10]
+&quot;b&quot; -&gt; [null]
+</code></pre>
+<p>Now, let's print and see what we've got.</p>
+<pre><code class="language-python">print(out)
+</code></pre>
+<pre><code class="language-text">shape: (2, 3)
+┌──────┬────────────┬──────────────────┐
+│ keys ┆ shift_map  ┆ shift_expression │
+│ ---  ┆ ---        ┆ ---              │
+│ str  ┆ list[i64]  ┆ list[i64]        │
+╞══════╪════════════╪══════════════════╡
+│ a    ┆ [null, 10] ┆ [null, 10]       │
+│ b    ┆ [7]        ┆ [null]           │
+└──────┴────────────┴──────────────────┘
+</code></pre>
+<p>Ouch.. we clearly get the wrong results here. Group <code>&quot;b&quot;</code> even got a value from group <code>&quot;a&quot;</code> 😵.</p>
+<p>This went horribly wrong, because the <code>map</code> applies the function before we aggregate! So that means the whole column
+<code>[10, 7, 1</code>] got shifted to <code>[null, 10, 7]</code> and was then aggregated.</p>
+<p>So my advice is to never use <code>map</code> in the <code>groupby</code> context unless you know you need it and know what you are doing.</p>
+<h2 id="to-apply"><a class="header" href="#to-apply">To <code>apply</code></a></h2>
+<p>Luckily we can fix previous example with <code>apply</code>. <code>apply</code> works on the smallest logical elements for that operation.</p>
+<p>That is:</p>
+<ul>
+<li><code>select context</code> -&gt; single elements</li>
+<li><code>groupby context</code> -&gt; single groups</li>
+</ul>
+<p>So with <code>apply</code> we should be able to fix our example:</p>
+<div class="tabbed-blocks">
+<pre><code class="language-python">out = df.groupby(&quot;keys&quot;, maintain_order=True).agg(
+    [
+        pl.col(&quot;values&quot;).apply(lambda s: s.shift()).alias(&quot;shift_map&quot;),
+        pl.col(&quot;values&quot;).shift().alias(&quot;shift_expression&quot;),
+    ]
+)
+print(out)
+</code></pre>
+<pre><code class="language-rust noplayground">    let out = df
+        .clone()
+        .lazy()
+        .groupby([col(&quot;keys&quot;)])
+        .agg([
+            col(&quot;values&quot;)
+                .apply(|s| Ok(s.shift(1)), GetOutput::default())
+                .alias(&quot;shift_map&quot;),
+            col(&quot;values&quot;).shift(1).alias(&quot;shift_expression&quot;),
+        ])
+        .collect()?;
+    println!(&quot;{}&quot;, out);
+</code></pre>
+</div>
+<pre><code class="language-text">shape: (2, 3)
+┌──────┬────────────┬──────────────────┐
+│ keys ┆ shift_map  ┆ shift_expression │
+│ ---  ┆ ---        ┆ ---              │
+│ str  ┆ list[i64]  ┆ list[i64]        │
+╞══════╪════════════╪══════════════════╡
+│ a    ┆ [null, 10] ┆ [null, 10]       │
+│ b    ┆ [null]     ┆ [null]           │
+└──────┴────────────┴──────────────────┘
+</code></pre>
+<p>And observe, a valid result! 🎉</p>
+<h2 id="apply-in-the-select-context"><a class="header" href="#apply-in-the-select-context"><code>apply</code> in the <code>select</code> context</a></h2>
+<p>In the <code>select</code> context, the <code>apply</code> expression passes elements of the column to the python function.</p>
+<p><em>Note that you are
+now running python, this will be slow.</em></p>
+<p>Let's go through some examples to see what to expect. We will continue with the <code>DataFrame</code> we defined at the start of
+this section and show an example with the <code>apply</code> function and a counter example where we use the expression API to
+achieve the same goals.</p>
+<h3 id="adding-a-counter"><a class="header" href="#adding-a-counter">Adding a counter</a></h3>
+<p>In this example we create a global <code>counter</code> and then add the integer <code>1</code> to the global state at every element processed.
+Every iteration the result of the increment will be added to the element value.</p>
+<blockquote>
+<p>Note, this example isn't provided in Rust.  The reason is that the global <code>counter</code> value would lead to data races when this apply is evaluated in parallel.  It would be possible to wrap it in a <code>Mutex</code> to protect the variable, but that would be obscuring the point of the example.  This is a case where the Python Global Interpreter Lock's performance tradeoff provides some safety guarantees.</p>
+</blockquote>
+<pre><code class="language-python">counter = 0
+
+
+def add_counter(val: int) -&gt; int:
+    global counter
+    counter += 1
+    return counter + val
+
+
+out = df.select(
+    [
+        pl.col(&quot;values&quot;).apply(add_counter).alias(&quot;solution_apply&quot;),
+        (pl.col(&quot;values&quot;) + pl.arange(1, pl.count() + 1)).alias(&quot;solution_expr&quot;),
+    ]
+)
+print(out)
+</code></pre>
+<pre><code class="language-text">shape: (3, 2)
+┌────────────────┬───────────────┐
+│ solution_apply ┆ solution_expr │
+│ ---            ┆ ---           │
+│ i64            ┆ i64           │
+╞════════════════╪═══════════════╡
+│ 11             ┆ 11            │
+│ 9              ┆ 9             │
+│ 4              ┆ 4             │
+└────────────────┴───────────────┘
+</code></pre>
+<h3 id="combining-multiple-column-values"><a class="header" href="#combining-multiple-column-values">Combining multiple column values</a></h3>
+<p>If we want to have access to values of different columns in a single <code>apply</code> function call, we can create <code>struct</code> data
+type. This data type collects those columns as fields in the <code>struct</code>. So if we'd create a struct from the columns
+<code>&quot;keys&quot;</code> and <code>&quot;values&quot;</code>, we would get the following struct elements:</p>
+<pre><code class="language-python">[
+    {&quot;keys&quot;: &quot;a&quot;, &quot;values&quot;: 10},
+    {&quot;keys&quot;: &quot;a&quot;, &quot;values&quot;: 7},
+    {&quot;keys&quot;: &quot;b&quot;, &quot;values&quot;: 1},
+]
+</code></pre>
+<p>In Python, those would be passed as <code>dict</code> to the calling python function and can thus be indexed by <code>field: str</code>.  In rust, you'll get a <code>Series</code> with the <code>Struct</code> type. The fields of the struct can then be indexed and downcast.</p>
+<div class="tabbed-blocks">
+<pre><code class="language-python">out = df.select(
+    [
+        pl.struct([&quot;keys&quot;, &quot;values&quot;]).apply(lambda x: len(x[&quot;keys&quot;]) + x[&quot;values&quot;]).alias(&quot;solution_apply&quot;),
+        (pl.col(&quot;keys&quot;).str.lengths() + pl.col(&quot;values&quot;)).alias(&quot;solution_expr&quot;),
+    ]
+)
+print(out)
+</code></pre>
+<pre><code class="language-rust noplayground">    let out = df
+        .lazy()
+        .select([
+            // pack to struct to get access to multiple fields in a custom `apply/map`
+            as_struct(&amp;[col(&quot;keys&quot;), col(&quot;values&quot;)])
+                // we will compute the len(a) + b
+                .apply(
+                    |s| {
+                        // downcast to struct
+                        let ca = s.struct_()?;
+
+                        // get the fields as Series
+                        let s_a = &amp;ca.fields()[0];
+                        let s_b = &amp;ca.fields()[1];
+
+                        // downcast the `Series` to their known type
+                        let ca_a = s_a.utf8()?;
+                        let ca_b = s_b.i32()?;
+
+                        // iterate both `ChunkedArrays`
+                        let out: Int32Chunked = ca_a
+                            .into_iter()
+                            .zip(ca_b)
+                            .map(|(opt_a, opt_b)| match (opt_a, opt_b) {
+                                (Some(a), Some(b)) =&gt; Some(a.len() as i32 + b),
+                                _ =&gt; None,
+                            })
+                            .collect();
+
+                        Ok(out.into_series())
+                    },
+                    GetOutput::from_type(DataType::Int32),
+                )
+                .alias(&quot;solution_apply&quot;),
+            (col(&quot;keys&quot;).str().count_match(&quot;.&quot;) + col(&quot;values&quot;)).alias(&quot;solution_expr&quot;),
+        ])
+        .collect()?;
+    println!(&quot;{}&quot;, out);
+</code></pre>
+</div>
+<pre><code class="language-text">shape: (3, 2)
+┌────────────────┬───────────────┐
+│ solution_apply ┆ solution_expr │
+│ ---            ┆ ---           │
+│ i64            ┆ i64           │
+╞════════════════╪═══════════════╡
+│ 11             ┆ 11            │
+│ 8              ┆ 8             │
+│ 2              ┆ 2             │
+└────────────────┴───────────────┘
+</code></pre>
+<h3 id="return-types"><a class="header" href="#return-types">Return types?</a></h3>
+<p>Custom python functions are black boxes for polars. We really don't know what kind of black arts you are doing, so we have
+to infer and try our best to understand what you meant.</p>
+<p>As a user it helps to understand what we do to better utilize custom functions.</p>
+<p>The data type is automatically inferred. We do that by waiting for the first non-null value. That value will then be used
+to determine the type of the <code>Series</code>.</p>
+<p>The mapping of python types to polars data types is as follows:</p>
+<ul>
+<li><code>int</code> -&gt; <code>Int64</code></li>
+<li><code>float</code> -&gt; <code>Float64</code></li>
+<li><code>bool</code> -&gt; <code>Boolean</code></li>
+<li><code>str</code> -&gt; <code>Utf8</code></li>
+<li><code>list[tp]</code> -&gt; <code>List[tp]</code> (where the inner type is inferred with the same rules)</li>
+<li><code>dict[str, [tp]]</code> -&gt; <code>struct</code></li>
+<li><code>Any</code> -&gt; <code>object</code> (Prevent this at all times)</li>
+</ul>
+<p>Rust types map as follows:</p>
+<ul>
+<li><code>i32</code> or <code>i64</code> -&gt; <code>Int64</code></li>
+<li><code>f32</code> or <code>f64</code> -&gt; <code>Float64</code></li>
+<li><code>bool</code> -&gt; <code>Boolean</code></li>
+<li><code>String</code> or <code>str</code> -&gt; <code>Utf8</code></li>
+<li><code>Vec&lt;tp&gt;</code> -&gt; <code>List[tp]</code> (where the inner type is inferred with the same rules)</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../dsl/numpy.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../notebooks/introduction_polars-py.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../dsl/numpy.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../notebooks/introduction_polars-py.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        <script type="text/javascript" src="../tabbed-code-blocks.js"></script>
+        
+
+        
+
+    </body>
+</html>

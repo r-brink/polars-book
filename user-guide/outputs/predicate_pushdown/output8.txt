@@ -1,0 +1,3 @@
+FILTER [([([(col("comment_karma")) > (0)]) & ([(col("link_karma")) > (0)])]) & (col("name").str.contains([Utf8(^a)]))] FROM
+  CSV SCAN data/reddit.csv
+  PROJECT */6 COLUMNS

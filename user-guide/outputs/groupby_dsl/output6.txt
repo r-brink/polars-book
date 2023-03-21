@@ -1,0 +1,12 @@
+shape: (5, 4)
+┌───────┬────────────────┬──────────────────┬────────────────────┐
+│ state ┆ youngest       ┆ oldest           ┆ alphabetical_first │
+│ ---   ┆ ---            ┆ ---              ┆ ---                │
+│ cat   ┆ str            ┆ str              ┆ str                │
+╞═══════╪════════════════╪══════════════════╪════════════════════╡
+│ CT    ┆ Elizabeth Esty ┆ Henry Edwards    ┆ Abner Sibal        │
+│ VT    ┆ Peter Smith    ┆ Samuel Shaw      ┆ Ahiman Miner       │
+│ WI    ┆ Sean Duffy     ┆ Henry Dodge      ┆ Adolphus Nelson    │
+│ ID    ┆ Raúl Labrador  ┆ William Wallace  ┆ Abe Goff           │
+│ WV    ┆ Carte Goodwin  ┆ Edward Rohrbough ┆ Adam Littlepage    │
+└───────┴────────────────┴──────────────────┴────────────────────┘

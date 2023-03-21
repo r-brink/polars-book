@@ -1,0 +1,3 @@
+naive plan: (run LazyFrame.explain(optimized=True) to see the optimized plan)
+
+DF ["#", "Name", "Type 1", "Type 2"]; PROJECT */13 COLUMNS; SELECTION: "None"

@@ -1,0 +1,1 @@
+{'foo': Int64, 'bar': Float64}
